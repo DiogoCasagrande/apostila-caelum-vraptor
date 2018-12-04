@@ -25,6 +25,16 @@ public class ProdutosController {
     	result.redirectTo(this).lista();
     }
     
+    public Produto edita(Long id) {
+    	System.out.println("edita controller----");
+    	return dao.carrega(id);
+    }
+    
+    public void altera(Produto produto) {
+    	dao.atualiza(produto);
+    	result.redirectTo(this).lista();
+    }
+    
     public void formulario() {
     	
     }

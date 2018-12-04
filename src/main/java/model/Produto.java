@@ -27,6 +27,12 @@ public class Produto{
 		this.preco = preco;
 	}
 	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public Long getId() {return this.id;}
+	
 	public String getNome() {return this.nome;}
 	
 	public String getDescricao() {return this.descricao;}

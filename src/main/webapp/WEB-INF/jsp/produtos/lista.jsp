@@ -11,6 +11,7 @@
 	<table>
 		<thead>
 			<tr>
+				<th>id</th>
 				<th>Nome</th>
 				<th>Descrição</th>
 				<th>Preço</th>
@@ -19,9 +20,11 @@
 		<tbody>
 			<c:forEach items="${produtoList}" var="produto">
 				<tr>
+					<td>${produto.id }</td>
 					<td>${produto.nome}</td>
 					<td>${produto.descricao}</td>
 					<td>${produto.preco}</td>
+					<td><a href="edita?id=${produto.id}">Editar</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
