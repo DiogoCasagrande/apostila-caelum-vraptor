@@ -18,7 +18,10 @@ public class ProdutosController {
     }
     
     public void adiciona(Produto produto) {
-    	ProdutoDao dao = new ProdutoDao();
     	dao.salve(produto);
+    }
+    
+    public void formulario() {
+    	
     }
 }
