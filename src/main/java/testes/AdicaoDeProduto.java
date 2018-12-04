@@ -9,5 +9,4 @@ public class AdicaoDeProduto{
 		
 		new ProdutoDao().salve(produto);
 	}
-
 }

@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 import br.com.caelum.vraptor.Resource;
+import dao.ProdutoDao;
 
 import java.util.*;
 @Resource
@@ -18,6 +19,7 @@ public class Mundo {
 		result.add("Japão");
 		result.add("Canadá");
 		result.add("Paraguai");
+		new ProdutoDao().listaTudo().forEach(action -> {System.out.println(action.getNome());});
 		return result;
 	}
 }
