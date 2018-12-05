@@ -46,11 +46,15 @@ public class ProdutoDao {
 	public Produto carrega(Long id) {
 		return (Produto) this.session.load(Produto.class, id);
 	}
-	
+
 	public void atualiza(Produto produto) {
-		Transaction tx = session.beginTransaction();
-		this.session.update(produto);
-		tx.commit();
+		try {
+			Transaction tx = session.beginTransaction();
+			this.session.update(produto);
+			tx.commit();
+		} catch (Exception e) {
+			System.out.println("Error Sessão ativa, não foi encerrada!!");
+		}
 	}
 
 }
