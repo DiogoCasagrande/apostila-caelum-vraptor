@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="adiciona">
+
+	<form action="<c:url value="/produtos"/>"method="POST">
 	<fieldset>
 		<legend>Adicionar Produto</legend>
 		

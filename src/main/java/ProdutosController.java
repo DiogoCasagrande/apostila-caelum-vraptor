@@ -1,5 +1,10 @@
 import java.util.List;
 
+import br.com.caelum.vraptor.Delete;
+import br.com.caelum.vraptor.Get;
+import br.com.caelum.vraptor.Path;
+import br.com.caelum.vraptor.Post;
+import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
@@ -19,10 +24,15 @@ public class ProdutosController {
         this.result = result;
         this.validator = validator;
     }
+    
+    @Get
+    @Path("/produtos/")
     public List<Produto> lista(){
         return dao.listaTudo();
     }
     
+    @Post
+    @Path("/produtos/")
     public void adiciona(final Produto produto) {
 
     	validator.validate(produto);
@@ -32,11 +42,15 @@ public class ProdutosController {
     	result.redirectTo(this).lista();
     }
     
+    @Get
+    @Path("/produtos/{id}")
     public Produto edita(Long id) {
     	System.out.println("edita controller----");
     	return dao.carrega(id);
     }
     
+    @Put
+    @Path("/produtos/{id}")
     public void altera(Produto produto) {
     	
     	if(produto.getNome() == null || produto.getNome().length() < 3) {
@@ -62,7 +76,15 @@ public class ProdutosController {
     	result.redirectTo(this).lista();
     }
     
+    @Get
+    @Path("/produtos/novo")
     public void formulario() {
+    	
+    }
+    
+    @Delete
+    @Path("/produtos/{id}")
+    public void remove(Long id) {
     	
     }
 }

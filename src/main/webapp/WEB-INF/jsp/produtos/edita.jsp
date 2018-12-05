@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="altera">
+		<form action="<c:url value="/produtos/${produto.id}"/>" method="POST">
 		<fieldset>
 			<legend>Editar Produto</legend>
 			<input type="hidden" name="produto.id" value="${produto.id}"/>
@@ -22,7 +22,7 @@
 			<label for="preco">Preco:</label>
 			<input id="preco" type="text" name="produto.preco" value="${produto.preco}"/>
 			
-			<button type="submit">Enviar</button>
+			<button type="submit" name="_method" value="PUT">Enviar</button>
 		</fieldset>
 	</form>
 </body>
