@@ -54,6 +54,26 @@ public class ProdutosController {
     }
     
     public void altera(Produto produto) {
+    	
+    	if(produto.getNome() == null || produto.getNome().length() < 3) {
+    		validator.add(new ValidationMessage(
+    				"Nome é obrigatóro e precisa ter mais de 3 letras",
+    				"produto.nome"));
+    	}
+    	
+    	if(produto.getDescricao() == null || produto.getDescricao().length() > 40) {
+    		validator.add(new ValidationMessage(
+    				"Descrição é obrigatoria e não pode ter mais que 40 letras",
+    				"produto.descricao"));
+    	}
+    	
+    	if(produto.getPreco() <= 0.0) {
+    		validator.add(new ValidationMessage(
+    				"Preco precisa ser positivo",
+    				"produto.preco"));
+    	}
+    	validator.onErrorUsePageOf(ProdutosController.class).formulario();
+    	
     	dao.atualiza(produto);
     	result.redirectTo(this).lista();
     }
