@@ -6,29 +6,49 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="../javascript/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src=".../jquery.validate.min.js"></script>
 </head>
 <body>
 
-	<form action="<c:url value="/produtos"/>"method="POST">
-	<fieldset>
-		<legend>Adicionar Produto</legend>
-		
-		<label for="nome">Nome:</label>
-		<input id="nome" type="text" name="produto.nome"/>
-		
-		<label for="descricao">Descrição:</label>
-		<textarea id="descricao" name="produto.descricao">${produto.descricao}</textarea>
-		
-		<label for="preco">Preco:</label>
-		<input id="preco" type="text" name="produto.preco"/>
-		
-		<button type="submit">Enviar</button>
-	</fieldset>
+	<script type="text/javascript" src=".../jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src=".../jquery.validate.min.js"></script>
+	<form id="produtosForm" action="<c:url value="/produtos/"/>"
+		method="POST">
+		<fieldset>
+			<legend>Adicionar Produto</legend>
+
+			<label for="nome">Nome:</label> <input id="nome" type="text"
+				name="produto.nome" /> <label for="descricao">Descrição:</label>
+			<textarea id="descricao" name="produto.descricao">${produto.descricao}</textarea>
+
+			<label for="preco">Preco:</label> <input id="preco" type="text"
+				name="produto.preco" />
+
+			<button type="submit">Enviar</button>
+		</fieldset>
 	</form>
 	<ul>
 		<c:forEach items="${errors }" var="error">
-			<li>${error.category } - ${error.message }</li>
+			<li>${error.category }- ${error.message }</li>
 		</c:forEach>
 	</ul>
+	<script type="text/javascript">
+		$('#produtosForm').validate({
+			rules : {
+				"produto.nome" : {
+					required : true,
+					minlength : 3
+				},
+				"produto.descricao" : {
+					required : true,
+					maxlength : 40
+				},
+				"produto.preco" : {
+					min : 0.0
+				}
+			}
+		})
+	</script>
 </body>
 </html>

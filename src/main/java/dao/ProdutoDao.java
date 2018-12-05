@@ -4,9 +4,10 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.caelum.vraptor.ioc.Component;
-import infra.CriadorDeSession;
 import model.Produto;
 
 @Component
@@ -55,6 +56,13 @@ public class ProdutoDao {
 		} catch (Exception e) {
 			System.out.println("Error Sessão ativa, não foi encerrada!!");
 		}
+	}
+
+	public List<Produto> busca(String nome) {
+		// TODO Auto-generated method stub
+		return session.createCriteria(Produto.class)
+				.add(Restrictions.ilike("nome", nome, MatchMode.ANYWHERE))
+				.list();
 	}
 
 }
