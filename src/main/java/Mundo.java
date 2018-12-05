@@ -1,11 +1,17 @@
 import java.util.ArrayList;
+import java.util.List;
 
 import br.com.caelum.vraptor.Resource;
 import dao.ProdutoDao;
-
-import java.util.*;
 @Resource
 public class Mundo {
+	
+	private final ProdutoDao dao;
+	
+	public Mundo(ProdutoDao dao) {
+		this.dao = dao;
+	}
+	
 	public String boasVindas() {
 		return "Olá mundo - return";
 	}
@@ -19,7 +25,7 @@ public class Mundo {
 		result.add("Japão");
 		result.add("Canadá");
 		result.add("Paraguai");
-		new ProdutoDao().listaTudo().forEach(action -> {System.out.println(action.getNome());});
+		dao.listaTudo().forEach(action -> {System.out.println(action.getNome());});
 		return result;
 	}
 }
