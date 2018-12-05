@@ -3,6 +3,10 @@ package model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class Produto{
@@ -11,8 +15,15 @@ public class Produto{
 	@GeneratedValue
 	private Long id;
 	
+	@NotNull
+	@Length(min=3)
 	private String nome;
+	
+	@NotNull
+	@Length(max=40)
 	private String descricao;
+	
+	@Min(0)
 	private double preco;
 
 	public void setNome(String name) {
