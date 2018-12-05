@@ -2,16 +2,20 @@ package infra;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
-public class CriadorDeSession {
+import br.com.caelum.vraptor.ioc.Component;
+import br.com.caelum.vraptor.ioc.ComponentFactory;
+
+@Component
+public class CriadorDeSession implements ComponentFactory<Session>{
 	
-	public static Session getSession() {
-		Configuration config = new Configuration();
-		
-		config.configure();
-		
-		SessionFactory factory = config.buildSessionFactory();
+	private SessionFactory factory;
+
+	public CriadorDeSession(SessionFactory factory) {
+		this.factory = factory;
+	}
+	
+	public Session getInstance() {
 		Session session = factory.openSession();
 		return session;
 	}

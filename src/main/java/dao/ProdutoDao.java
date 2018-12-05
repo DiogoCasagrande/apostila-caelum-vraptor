@@ -14,8 +14,8 @@ public class ProdutoDao {
 
 	private final Session session;
 
-	public ProdutoDao() {
-		this.session = CriadorDeSession.getSession();
+	public ProdutoDao(Session session) {
+		this.session = session;
 	}
 
 	public void salve(Produto produto) {
